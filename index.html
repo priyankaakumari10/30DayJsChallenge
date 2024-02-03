@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="search" onchange="getData()" />
+    <script>
+      function getData() {
+        console.log("fetching data...");
+      }
+      function myDebounce(func, delay){
+        let timer;
+       
+        return function(...args){
+            console.log("timer",args)
+            if(timer)clearTimeout(timer);
+            setTimeout(()=>{
+                console.log("timer",args)
+
+                func();
+            },delay)
+        }
+      }
+      const debounceGetData=myDebounce(getData,3000);
+    </script>
+  </body>
+</html>
